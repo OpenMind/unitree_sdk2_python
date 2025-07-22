@@ -71,7 +71,7 @@ class LocoClient(Client):
             return self._CallNoReply(ROBOT_API_ID_LOCO_SET_VELOCITY, parameter)
         code, data = self._Call(ROBOT_API_ID_LOCO_SET_VELOCITY, parameter)
         return code
-    
+
     # 7106
     def SetTaskId(self, task_id: float, noReply: bool = False):
         p = {}
@@ -84,7 +84,7 @@ class LocoClient(Client):
 
     def Damp(self, noReply: bool = False):
         self.SetFsmId(1, noReply)
-    
+
     def Start(self, noReply: bool = False):
         self.SetFsmId(200, noReply)
 
@@ -94,8 +94,8 @@ class LocoClient(Client):
     def Lie2StandUp(self):
         self.SetFsmId(702)
 
-    def Sit(self, noReply: bool = False):
-        self.SetFsmId(3, noReply)
+    def Sit(self):
+        self.SetFsmId(3)
 
     def StandUp2Squat(self):
         self.SetFsmId(706)
@@ -134,4 +134,3 @@ class LocoClient(Client):
         else:
             self.first_shake_hand_stage_ = not self.first_shake_hand_stage_
             return self.SetTaskId(3 if self.first_shake_hand_stage_ else 2, noReply)
-    
