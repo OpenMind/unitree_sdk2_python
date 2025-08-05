@@ -21,8 +21,8 @@ class AudioClient(Client):
         self._RegistApi(ROBOT_API_ID_AUDIO_START_PLAY, 0)
         self._RegistApi(ROBOT_API_ID_AUDIO_STOP_PLAY, 0)
         self._RegistApi(ROBOT_API_ID_AUDIO_GET_VOLUME, 0)
-        self._RegistApi(ROBOT_API_ID_AUDIO_SET_VOLUME, 0) 
-        self._RegistApi(ROBOT_API_ID_AUDIO_SET_RGB_LED, 0) 
+        self._RegistApi(ROBOT_API_ID_AUDIO_SET_VOLUME, 0)
+        self._RegistApi(ROBOT_API_ID_AUDIO_SET_RGB_LED, 0)
 
     ## API Call ##
     def TtsMaker(self, text: str, speaker_id: int):
@@ -69,3 +69,11 @@ class AudioClient(Client):
         parameter = json.dumps({"app_name": app_name})
         self._Call(ROBOT_API_ID_AUDIO_STOP_PLAY, parameter)
         return 0
+
+    def LedControlNoReply(self, R: int, G: int, B: int):
+        p = {}
+        p["R"] = R
+        p["G"] = G
+        p["B"] = B
+        parameter = json.dumps(p)
+        return self._CallNoReply(ROBOT_API_ID_AUDIO_SET_RGB_LED, parameter)
