@@ -6,6 +6,9 @@ ChannelConfigHasInterface = '''<?xml version="1.0" encoding="UTF-8" ?>
                     <NetworkInterface name="$__IF_NAME__$" priority="default" multicast="default"/>
                 </Interfaces>
             </General>
+            <Discovery>
+                <MaxAutoParticipantIndex>200</MaxAutoParticipantIndex>
+            </Discovery>
             <Tracing>
                 <Verbosity>config</Verbosity>
             <OutputFile>/tmp/cdds.LOG</OutputFile>
